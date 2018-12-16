@@ -1,0 +1,6 @@
+framework module Pods_AztecStudy {
+  umbrella header "Pods-AztecStudy-umbrella.h"
+
+  export *
+  module * { export * }
+}
