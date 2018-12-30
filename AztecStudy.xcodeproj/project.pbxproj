@@ -25,6 +25,8 @@
 		8398DD0A21C6DFEC0044E4D3 /* AddAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398DD0921C6DFEC0044E4D3 /* AddAssignmentViewController.swift */; };
 		8398DD0C21C6E6E30044E4D3 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398DD0B21C6E6E30044E4D3 /* Assignment.swift */; };
 		8398DD1021C6F4BD0044E4D3 /* AssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398DD0F21C6F4BD0044E4D3 /* AssignmentTableViewCell.swift */; };
+		8398DD1221C70DE70044E4D3 /* CompletedAssignmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398DD1121C70DE70044E4D3 /* CompletedAssignmentsViewController.swift */; };
+		8398DD1421C7551D0044E4D3 /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398DD1321C7551D0044E4D3 /* GroupDetailsViewController.swift */; };
 		839B2E6F2160936600A995EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839B2E6E2160936600A995EF /* AppDelegate.swift */; };
 		839B2E742160936600A995EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 839B2E722160936600A995EF /* Main.storyboard */; };
 		839B2E762160936700A995EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839B2E752160936700A995EF /* Assets.xcassets */; };
@@ -53,6 +55,8 @@
 		8398DD0921C6DFEC0044E4D3 /* AddAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssignmentViewController.swift; sourceTree = "<group>"; };
 		8398DD0B21C6E6E30044E4D3 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		8398DD0F21C6F4BD0044E4D3 /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
+		8398DD1121C70DE70044E4D3 /* CompletedAssignmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedAssignmentsViewController.swift; sourceTree = "<group>"; };
+		8398DD1321C7551D0044E4D3 /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
 		839B2E6B2160936600A995EF /* AztecStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AztecStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		839B2E6E2160936600A995EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		839B2E732160936600A995EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,25 +118,27 @@
 		839B2E6D2160936600A995EF /* AztecStudy */ = {
 			isa = PBXGroup;
 			children = (
-				8398DD0F21C6F4BD0044E4D3 /* AssignmentTableViewCell.swift */,
 				839B2E6E2160936600A995EF /* AppDelegate.swift */,
 				839B2E722160936600A995EF /* Main.storyboard */,
+				83F041C0216416DF00086D31 /* LoginViewController.swift */,
+				830095C52177126600AAFC43 /* RegisterViewController.swift */,
+				83613F64216899450040F021 /* WelcomeViewController.swift */,
+				8393976821C4A1B4005063EC /* ScheduleTableViewController.swift */,
+				8393976621C49952005063EC /* ScheduleTableViewCell.swift */,
+				8393976C21C4ADFC005063EC /* AddClassViewController.swift */,
+				8353353E21C61298005F96B7 /* MapViewController.swift */,
+				8353353A21C5F60A005F96B7 /* CreateGroupViewController.swift */,
+				8353354221C6310E005F96B7 /* JoinGroupViewController.swift */,
+				8398DD1321C7551D0044E4D3 /* GroupDetailsViewController.swift */,
 				8398DD0921C6DFEC0044E4D3 /* AddAssignmentViewController.swift */,
 				8398DD0721C6D21B0044E4D3 /* CurrentAssignmentsViewController.swift */,
-				8393976821C4A1B4005063EC /* ScheduleTableViewController.swift */,
+				8398DD1121C70DE70044E4D3 /* CompletedAssignmentsViewController.swift */,
 				8398DD0521C6C9260044E4D3 /* AssignmentsViewController.swift */,
-				8353354221C6310E005F96B7 /* JoinGroupViewController.swift */,
-				8353353E21C61298005F96B7 /* MapViewController.swift */,
+				8398DD0F21C6F4BD0044E4D3 /* AssignmentTableViewCell.swift */,
 				8353354021C61FC7005F96B7 /* Annotation.swift */,
-				8353353A21C5F60A005F96B7 /* CreateGroupViewController.swift */,
-				8393976C21C4ADFC005063EC /* AddClassViewController.swift */,
 				8393976A21C4A3FA005063EC /* Classes.swift */,
 				8398DD0B21C6E6E30044E4D3 /* Assignment.swift */,
 				8353353C21C60571005F96B7 /* Group.swift */,
-				8393976621C49952005063EC /* ScheduleTableViewCell.swift */,
-				83613F64216899450040F021 /* WelcomeViewController.swift */,
-				83F041C0216416DF00086D31 /* LoginViewController.swift */,
-				830095C52177126600AAFC43 /* RegisterViewController.swift */,
 				839B2E752160936700A995EF /* Assets.xcassets */,
 				839B2E80216093D500A995EF /* Images */,
 				839B2E772160936700A995EF /* LaunchScreen.storyboard */,
@@ -271,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8398DD1221C70DE70044E4D3 /* CompletedAssignmentsViewController.swift in Sources */,
 				8398DD0C21C6E6E30044E4D3 /* Assignment.swift in Sources */,
 				8353353F21C61298005F96B7 /* MapViewController.swift in Sources */,
 				8398DD0621C6C9260044E4D3 /* AssignmentsViewController.swift in Sources */,
@@ -280,6 +287,7 @@
 				83613F65216899450040F021 /* WelcomeViewController.swift in Sources */,
 				8353353D21C60571005F96B7 /* Group.swift in Sources */,
 				8398DD0A21C6DFEC0044E4D3 /* AddAssignmentViewController.swift in Sources */,
+				8398DD1421C7551D0044E4D3 /* GroupDetailsViewController.swift in Sources */,
 				830095C62177126600AAFC43 /* RegisterViewController.swift in Sources */,
 				8398DD1021C6F4BD0044E4D3 /* AssignmentTableViewCell.swift in Sources */,
 				8393976721C49952005063EC /* ScheduleTableViewCell.swift in Sources */,

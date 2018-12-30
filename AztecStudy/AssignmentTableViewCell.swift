@@ -8,15 +8,22 @@
 
 import UIKit
 
+/* Assignement Table Cell Controller
+ *
+ * Handles the Custom Table Cell for the Assignment Page
+ */
 class AssignmentTableViewCell: UITableViewCell {
 
+    //MARK: Outlets
+    
     @IBOutlet weak var classLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
     
+    //MARK: Initial Load
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

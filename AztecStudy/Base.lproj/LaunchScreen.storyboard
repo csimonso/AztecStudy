@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,22 +21,37 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="University_Campus.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="z7f-Je-FLG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashScreenImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="BGi-jb-Xkt">
-                                <rect key="frame" x="18.5" y="164.5" width="338" height="338"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lhW-H2-teX">
+                                <rect key="frame" x="23.5" y="143.5" width="328" height="380"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seal.png" translatesAutoresizingMaskIntoConstraints="NO" id="BnS-9s-cIY">
+                                        <rect key="frame" x="26" y="0.0" width="276" height="306"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="276" id="QY1-8d-6Dh"/>
+                                            <constraint firstAttribute="height" constant="306" id="eR3-uR-sXO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aztec Study" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZNt-Sv-2IZ">
+                                        <rect key="frame" x="1" y="314" width="326.5" height="66"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="56"/>
+                                        <color key="textColor" red="0.76862745099999996" green="0.070588235289999995" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="BGi-jb-Xkt" secondAttribute="height" multiplier="1:1" id="HsP-BR-0x6"/>
+                                    <constraint firstItem="BnS-9s-cIY" firstAttribute="leading" secondItem="lhW-H2-teX" secondAttribute="leading" constant="26" id="7ef-b5-3fl"/>
                                 </constraints>
-                            </imageView>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="lhW-H2-teX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Ixm-wn-47r"/>
+                            <constraint firstItem="lhW-H2-teX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KKw-kc-fec"/>
                             <constraint firstItem="z7f-Je-FLG" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="fsa-JK-ZVZ"/>
-                            <constraint firstItem="BGi-jb-Xkt" firstAttribute="width" secondItem="z7f-Je-FLG" secondAttribute="height" multiplier="338:667" id="hPz-T1-jFf"/>
                             <constraint firstItem="z7f-Je-FLG" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="pfl-TZ-HfG"/>
                             <constraint firstItem="z7f-Je-FLG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qvD-Ni-V4X"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z7f-Je-FLG" secondAttribute="trailing" id="st9-kk-gIQ"/>
-                            <constraint firstItem="BGi-jb-Xkt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uAJ-cs-GxJ"/>
-                            <constraint firstItem="BGi-jb-Xkt" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="xBx-Hq-oUi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -49,6 +63,6 @@
     </scenes>
     <resources>
         <image name="University_Campus.jpg" width="4256" height="2832"/>
-        <image name="splashScreenImage.png" width="335" height="346"/>
+        <image name="seal.png" width="275" height="306"/>
     </resources>
 </document>

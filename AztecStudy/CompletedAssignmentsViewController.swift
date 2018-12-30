@@ -1,5 +1,5 @@
 //
-//  CurrentAssignmentsViewController.swift
+//  CompletedAssignmentsViewController.swift
 //  AztecStudy
 //
 //  Created by Christopher Simonson on 12/16/18.
@@ -9,36 +9,30 @@
 import UIKit
 import Firebase
 
-/* Current Assignments View Controller
+/* Completed Assignments View Controller
  *
- * Displays the users current assignments.  User can also click the checkbox next to the assignment to mark as complete.
- * Checked assignment will than transition to completed assignments tab.
+ * Displays the completed assignments for the user.
  */
-class CurrentAssignmentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class CompletedAssignmentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
+ 
     //MARK: Outlets
     
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: Properties
-    
     var assignments = [Assignment]()
     let userID = Auth.auth().currentUser?.uid
-    
+
     //MARK: Table Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return assignments.count 
+        return assignments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CheckBoxCell", for: indexPath) as? AssignmentTableViewCell else {
             fatalError("The dequed cell is not an instance of ScheduleTableViewCell")
         }
-        let btnCheck = cell.contentView.viewWithTag(1) as? UIButton
-        btnCheck?.tag = indexPath.row
-        btnCheck?.addTarget(self, action: #selector(checkboxClicked(_ :)), for: .touchUpInside)
-        
         let assignmentInfo = assignments[indexPath.row]
         cell.classLabel.text = assignmentInfo.course
         cell.detailsLabel.text = assignmentInfo.details
@@ -54,56 +48,35 @@ class CurrentAssignmentsViewController: UIViewController, UITableViewDelegate, U
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
- 
-    /* Slide to delete assignment */
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let assignmentInfo = assignments[indexPath.row]
             let assignmentID = assignmentInfo.assignmentID
-            Database.database().reference().child("users").child(userID!).child("assignments").child("current").child(assignmentID).removeValue()
+            Database.database().reference().child("users").child(userID!).child("assignments").child("completed").child(assignmentID).removeValue()
             self.assignments.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
     }
- 
-
+    
     //MARK: Initial Load
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Set delegates
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        //Load assignemnts
+        //Load assignments
         loadAssignments()
     }
     
-    //MARK: Action
-    
-    /* Unwind the segue */
-    @IBAction func unwindToCurrentViewController(segue: UIStoryboardSegue) {
-        loadAssignments()
-    }
-    
-    /* Helper method to handle when the check box for the assignment is clicked */
-    @objc func checkboxClicked(_ sender: UIButton) {
-        if (!sender.isSelected) {
-            let alertController = UIAlertController(title: "Mark Assignment Complete", message: "Are You Sure?", preferredStyle: UIAlertController.Style.alert)
-            alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: {(action: UIAlertAction!) in
-                self.assignmentCompleted(sender: sender.tag)
-            }))
-            alertController.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: {(action: UIAlertAction!) in
-                print("CANCEL ACTION")
-                
-            }))
-            DispatchQueue.main.async {
-                self.present(alertController, animated: true, completion: nil)
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     //MARK: Private Methods
     
+    /* Converts Numeric Month to String */
     private func getMonth(date: String) -> String {
         var month = ""
         switch date {
@@ -137,35 +110,24 @@ class CurrentAssignmentsViewController: UIViewController, UITableViewDelegate, U
         return month
     }
     
-    /* Assignment marked as complete so assignment is moved to completed assignments in the Firebase database*/
-    private func assignmentCompleted(sender: Int) {
-        let assignment = self.assignments[sender]
-        assignment.completed = true
-        let ref = Database.database().reference()
-        ref.child("users").child(userID!).child("assignments").child("completed").child(assignment.assignmentID).setValue(["course": assignment.course, "details": assignment.details , "dueDate": assignment.dueDate,"completed": assignment.completed, "ID": assignment.assignmentID])
-        ref.child("users").child(userID!).child("assignments").child("current").child(assignment.assignmentID).removeValue()
-        self.assignments.remove(at: sender)
-        self.tableView.reloadData()
-    }
-    
-    /* Loads the assignments */
+    /* Loads the user assignments */
     private func loadAssignments() {
         assignments = []
-        let data = Database.database().reference().child("users").child(userID!).child("assignments").child("current")
+        let data = Database.database().reference().child("users").child(userID!).child("assignments").child("completed")
         data.observeSingleEvent(of: .value) { snapshot in
+            //Loop through users completed assignments
             for assignment in snapshot.children {
-                //Loop through assignments for the user
                 let snap = assignment as! DataSnapshot
                 let assignmentID = snap.key
                 let assignmentChildren = data.child(assignmentID)
                 assignmentChildren.observeSingleEvent(of: .value) { childSnap in
-                    //Local variables to hold assignment details
+                    //Local variables for each assignment details
                     var course = ""
                     var details = ""
                     var dueDate = ""
-                    var completed = false
+                    var completed = true
                     var id = ""
-                    //Loop through assignment details
+                    //Loops through the assignment details
                     for assignmentData in childSnap.children {
                         let csnap = assignmentData as! DataSnapshot
                         let category = csnap.key
@@ -189,7 +151,7 @@ class CurrentAssignmentsViewController: UIViewController, UITableViewDelegate, U
                     //Create an assignment entry
                     let assignmentEntry = Assignment(course: course, dueDate: dueDate, details: details, completed: completed, assignmentID: id)
                     self.assignments.append(assignmentEntry)
-                    //Sort by due date
+                    //Sort assignments by date due
                     self.assignments = self.assignments.sorted(by: {$0.dueDate < $1.dueDate})
                     //Reload the data
                     self.tableView.reloadData()
@@ -197,4 +159,4 @@ class CurrentAssignmentsViewController: UIViewController, UITableViewDelegate, U
             }
         }
     }
-}
+ }

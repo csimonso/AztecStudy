@@ -8,28 +8,17 @@
 
 import UIKit
 
+/* Assignments View Controller
+ *
+ * Main Tab Bar Controller for the Assignments
+ */
 class AssignmentsViewController: UITabBarController {
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //Set properties
         self.title = "Assignments"
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 25)!], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 25)!], for: .selected)
-        
-        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
